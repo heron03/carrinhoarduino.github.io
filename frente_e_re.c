@@ -7,7 +7,7 @@
 #define    A2  // Define o pino do buzzer (Som) no pino ANALÓGICO A0  
 AF_DCMotor motor1(1);    // Define o motor1 ligado ao M1  
 AF_DCMotor motor2(2);    // Define o motor2 ligado ao M2  
-int TempoGirar = 1;//esse é o tempo para o robô girar em 45º com uma bateria de 9v.
+int TempoGirar = 2;//esse é o tempo para o robô girar em 45º com uma bateria de 9v.
 int distanciaObstaculo = 40; //distância para o robô parar e recalcular o melhor caminho
 int velocidadeMotores = 80; // velocidade que os motores funcionarão na bateria 9v. Para a bateria 9v a velocidade 80 é ideal
 Servo servo_ultra_sonico; // nomeando o servo motor    
@@ -29,7 +29,6 @@ void setup(){
 }    
 // Função principal do Arduino    
 void loop(){    
-    reposicionaServoSonar(); //Coloca o servo para olhar a frente    
     int distancia = lerSonar(); // Ler o sensor de distância  
     Serial.print("distancia em cm: ");
     Serial.println(distancia);   // Exibe no serial monitor
@@ -43,7 +42,6 @@ void loop(){
 }    
 // Função para chamar outras funções e definir o que o robô fará  
 void pensar(){    
-    reposicionaServoSonar(); //Coloca o servo para olhar a frente    
     int distancia = lerSonar(); // Ler o sensor de distância  
     Serial.print("distancia em cm: ");
     Serial.println(distancia);   // Exibe no serial monitor
@@ -83,7 +81,6 @@ return leituraDoSonar;       // Retorna a distância
 char calculaMelhorDistancia(){    
    
     int centro = calcularDistanciaCentro();    
-    reposicionaServoSonar();    
     int maiorDistancia = 0;  
     char melhorDistancia = '0';        
     melhorDistancia = 'c';    
@@ -92,7 +89,6 @@ char calculaMelhorDistancia(){
     rotacao_Re();    
     posicionaCarroMelhorCaminho();    
     }    
-    reposicionaServoSonar();  
     return melhorDistancia;    
 }    
 // Função para colocar o carrinho na melhor distância, isto é, girá-lo para a melhor distância    
@@ -104,16 +100,8 @@ void posicionaCarroMelhorCaminho(){
     pensar();    
     }else{    
     rotacao_Re();    
-   
-    rotacao_Re();  
     }    
-    reposicionaServoSonar();    
-}    
-// Função para deixar o sensor "olho" do robô no centro    
-void reposicionaServoSonar(){    
-    servo_ultra_sonico.write(90);  
-    delay(200);  
-}    
+}       
 // Função para fazer o carro parar    
 void rotacao_Parado() {    
     Serial.println(" Motor: Parar ");
