@@ -64,9 +64,9 @@ int calcularDistanciaCentro(){
 servo_ultra_sonico.write(90);    
 delay(20);   
 int leituraDoSonar = lerSonar();  // Ler sensor de distância  
-delay(500);   
+delay(250);   
 leituraDoSonar = lerSonar();   
-delay(500);   
+delay(250);   
 Serial.print("Distancia do Centro: "); // Exibe no serial  
 Serial.println(leituraDoSonar);   
 return leituraDoSonar;       // Retorna a distância  
@@ -75,19 +75,19 @@ return leituraDoSonar;       // Retorna a distância
 int calcularDistanciaDireita(){    
  
 servo_ultra_sonico.write(0);  
-delay(200);  
+delay(100);  
 int leituraDoSonar1 = lerSonar();   
-delay(500);   
+delay(250);   
 leituraDoSonar1 = lerSonar();   
-delay(500);   
+delay(250);   
 Serial.print("Distancia da Direita1: ");  
 Serial.println(leituraDoSonar1);   
 servo_ultra_sonico.write(45);   
-delay(200);  
+delay(100);  
 int leituraDoSonar2 = lerSonar();   
-delay(500);   
+delay(250);   
 leituraDoSonar2 = lerSonar();   
-delay(500);   
+delay(250);   
 Serial.print("Distancia da Direita2: ");  
 Serial.println(leituraDoSonar2);
 
@@ -101,19 +101,19 @@ return leituraDoSonar2;
 // Função para calcular a distância da esquerda    
 int calcularDistanciaEsquerda(){   
     servo_ultra_sonico.write(180);  
-delay(200);  
+delay(100);  
 int leituraDoSonar1 = lerSonar();   
-delay(500);   
+delay(100);   
 leituraDoSonar1 = lerSonar();   
-delay(500);   
+delay(250);   
 Serial.print("Distancia da Esquerda1: ");  
 Serial.println(leituraDoSonar1);   
 servo_ultra_sonico.write(145);   
-delay(200);  
+delay(100);  
 int leituraDoSonar2 = lerSonar();   
-delay(500);   
+delay(250);   
 leituraDoSonar2 = lerSonar();   
-delay(500);   
+delay(250);   
 Serial.print("Distancia da Esquerda2: ");  
 Serial.println(leituraDoSonar2);
 
@@ -170,8 +170,8 @@ void posicionaCarroMelhorCaminho(){
 }    
 // Função para deixar o sensor "olho" do robô no centro    
 void reposicionaServoSonar(){    
-    servo_ultra_sonico.write(45);   
-    delay(200);   
+    servo_ultra_sonico.write(90);   
+    delay(100);   
 }    
 // Função para fazer o carro parar    
 void rotacao_Parado() {    
